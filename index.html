@@ -5,18 +5,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ashok Bhaargaw Projects</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
+
 <body class="bg-gray-100 text-center py-10">
-  <h1 class="text-3xl font-bold mb-6">My React Projects</h1>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
-    <a href="./Quiz-App/" class="bg-white p-6 rounded-xl shadow hover:shadow-lg">
-      <h2 class="text-xl font-semibold">Project 1</h2>
-      <p class="text-gray-600 mt-2">Short description...</p>
-    </a>
-    <a href="./ToDo-App/" class="bg-white p-6 rounded-xl shadow hover:shadow-lg">
-      <h2 class="text-xl font-semibold">Project 2</h2>
-      <p class="text-gray-600 mt-2">Short description...</p>
-    </a>
-  </div>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const projects = [
+      {
+        name: "ToDo App",
+        description: "A simple ToDo App made with React Context API.",
+        link: "./ToDo-App/dist/"
+      },
+      {
+        name: "Quiz App",
+        description: "A Quiz App where you get questions from an API.",
+        link: "./Quiz-App/dist/"
+      },
+      {
+        name: "Weather App",
+        description: "Get live weather updates using OpenWeather API.",
+        link: "./Weather-App/dist/"
+      }
+   
+    ];
+
+    const App = () => (
+      <div>
+        <h1 className="text-3xl font-bold mb-8">Ashok Bhaargaw Projects</h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto px-4">
+          {
+            projects.map((p, index) => (
+            <a key={index}
+              href={p.link}
+              target="_blank"
+              className="bg-white rounded-xl shadow p-6 hover:shadow-2xl transition transform hover:-translate-y-1 duration-300"
+            >
+              <h2 className="text-xl font-semibold text-gray-800">{p.name}</h2>
+              <p className="text-gray-600 mt-2">{p.description}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    );
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
 </body>
 </html>
