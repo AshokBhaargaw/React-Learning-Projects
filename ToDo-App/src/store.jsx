@@ -1,11 +1,11 @@
-import { createContext, useContext, useReducer, useEffect } from "react";
+import { createContext, useContext, useReducer, useEffect, act } from "react";
 
 export const store = createContext();
 
 export const StoreProvider = ({ children }) => {
     const initialValue = JSON.parse(localStorage.getItem('tasks')) || [
-        // {
-        //    tID: 123,    this is only dommy data, so I can userstand easily 
+        // { this is only dommy data, so I can userstand easily 
+        //    tID: 123,    
         //    tText: "Roti jim lo",
         //    tDone: false,
         // },
@@ -17,7 +17,19 @@ export const StoreProvider = ({ children }) => {
                 return [action.payload, ...state]
 
             case 'removeTask':
-                return state.filter((task) => action.payload !== task.tID ? state : null)
+                return state.filter(task => task.tID !== action.payload)
+
+            case 'updateTask':
+                return state.map(task => task.tID === action.payload.id ? { ...task, tText: action.payload.text } : task)
+
+            case 'toggleDone':
+                return state.map(task => task.tID === action.payload.id ? { ...task, tDone: action.payload.done } : task)
+
+            case 'toggleAllDone':
+                return state.map(task => ({ ...task, tDone: action.payload }));
+
+            case 'clearComplated':
+                return state.filter(task => task.tDone == false)
 
             default:
                 return state;

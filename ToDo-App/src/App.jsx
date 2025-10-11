@@ -2,6 +2,8 @@ import React from 'react'
 import { useTodo } from './store'
 import AddNewTask from './AddNewTask';
 import TaskTemplate from './TaskTemplate';
+import DoneAndClear from './DoneAndClear';
+
 
 
 
@@ -14,6 +16,9 @@ export default function App() {
         <h1 className='font-bold text-2xl text-center '>To Do App</h1>
         <hr className='my-3 ' />
         <AddNewTask />
+        {
+          state.length > 1 && <DoneAndClear />
+        }
         {
           state.map(taskData => <TaskTemplate key={taskData.tID} data2show={[taskData.tDone, taskData.tText, taskData.tID]} />)
         }
