@@ -34,7 +34,7 @@ export default function TaskTemplate({ data2show }) {
                     className='  mt-2 text-2xl border-0 outline-0' type="text" ref={taskText} />
                 <p className='text-xs text-gray-600 ' >Created on: {timeofCreation.toLocaleString()}</p>
             </div>
-            <button onClick={() => setEditable(!editable)} className='hover:text-blue-500' >{editable ? <FaEdit size={20} /> : <FaRegEdit size={20} />}</button>
+            <button onClick={() => setEditable(!editable)} className='hover:text-blue-500 outline-0' >{editable ? <FaEdit size={20} /> : <FaRegEdit size={20} />}</button>
             <button onClick={deleteHandler} className='hover:text-red-500' ><MdDeleteOutline size={23} /></button>
         </div >
     )

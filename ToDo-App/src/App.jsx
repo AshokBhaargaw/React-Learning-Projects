@@ -5,10 +5,8 @@ import TaskTemplate from './TaskTemplate';
 import DoneAndClear from './DoneAndClear';
 
 
-
-
 export default function App() {
-  const { state, dispatch } = useTodo();
+  const { state } = useTodo();
 
   return (
     <div className='flex justify-center place-items-center min-h-screen'>
