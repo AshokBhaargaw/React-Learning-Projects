@@ -1,17 +1,26 @@
 import { useState } from 'react'
 import { FaGoogle, FaLinkedin, FaYoutube, FaInstagram, FaGithub, FaFacebook } from "react-icons/fa";
 import { FaXTwitter, FaEarthAsia } from "react-icons/fa6";
+import { useSelector } from 'react-redux';
+import type { RootState } from '../Redux/store'
+
+
 
 export default function SearchBar() {
     const [input, setinput] = useState('')
     let searchString = input.split(" ").join("+")
+    const currentMode = useSelector((state: RootState) => state.theme.mode);
+
+    console.log(currentMode);
 
     const searchOnGoogle = () => {
-        window.open(`https://www.google.com/search?q=${searchString}`, "_blank")
+        window.open(`https://www.google.com/search?q=${searchString}`)
+        setinput('')
     }
 
     const searchOnYoutube = () => {
-        window.open(`https://www.youtube.com/results?search_query=${searchString}`, "_blank")
+        window.open(`https://www.youtube.com/results?search_query=${searchString}`)
+        setinput('')
     }
 
     return (
@@ -28,13 +37,13 @@ export default function SearchBar() {
                 <span className="bg-gray-100 w-2/12 flex justify-evenly border rounded-r-xl">
                     <button
                         onClick={searchOnGoogle}
-                        className="cursor-pointer hover:bg-slate-300 h-full w-6/12 flex justify-center items-center border-r border-slate-400"
+                        className="dark:bg-slate-800 cursor-pointer hover:bg-slate-300 h-full w-6/12 flex justify-center items-center border-r border-slate-400"
                     >
                         <FaGoogle size={22} />
                     </button>
                     <button
                         onClick={searchOnYoutube}
-                        className="cursor-pointer hover:bg-slate-300 h-full w-6/12 flex justify-center items-center rounded-r-xl"
+                        className="dark:bg-slate-800 cursor-pointer hover:bg-slate-300 h-full w-6/12 flex justify-center items-center rounded-r-xl"
                     >
                         <FaYoutube size={25} />
                     </button>
@@ -46,27 +55,27 @@ export default function SearchBar() {
 
                 <a href="https://www.linkedin.com/in/ashokbhaargaw/" target="_blank" rel="noreferrer" className='flex place-items-center flex-col'>
                     <FaLinkedin size={28} color="#4285F4" />
-                    <label className='text-slate-500 text-sm'>LinkedIn </label>
+                    <label className='text-slate-500 text-sm dark:text-slate-300'>LinkedIn </label>
                 </a>
                 <a href="https://www.facebook.com/ashokbhaargaw/" target="_blank" rel="noreferrer" className='flex place-items-center flex-col'>
                     <FaFacebook size={28} color="#4285F4" />
-                    <label className='text-slate-500 text-sm'>Facebook </label>
+                    <label className='text-slate-500 text-sm dark:text-slate-300'>Facebook </label>
                 </a>
                 <a href="https://www.instagram.com/dev.ashokbhaargaw/" target="_blank" rel="noreferrer" className='flex place-items-center flex-col'>
                     <FaInstagram size={28} color="#E1306C" />
-                    <label className='text-slate-500 text-sm'>Instagram </label>
+                    <label className='text-slate-500 text-sm dark:text-slate-300'>Instagram </label>
                 </a>
                 <a href="https://github.com/AshokBhaargaw/" target="_blank" rel="noreferrer" className='flex place-items-center flex-col'>
-                    <FaGithub size={28} color="#171515" />
-                    <label className='text-slate-500 text-sm'>Github </label>
+                    <FaGithub size={28} color={currentMode == 'light' ? "#000000" : "#eee"} />
+                    <label className='text-slate-500 text-sm dark:text-slate-300'>Github </label>
                 </a>
                 <a href="https://x.com/AshokBhaargaw" target="_blank" rel="noreferrer" className='flex place-items-center flex-col'>
-                    <FaXTwitter size={28} color="#000000" />
-                    <label className='text-slate-500 text-sm'>Twitter </label>
+                    <FaXTwitter size={28} color={currentMode == 'light' ? "#000000" : "#eee"} />
+                    <label className='text-slate-500 text-sm dark:text-slate-300'>Twitter </label>
                 </a>
                 <a href="https://www.naukri.com/" target="_blank" rel="noreferrer" className='flex place-items-center flex-col'>
-                    <FaEarthAsia size={28} color="#000000" />
-                    <label className='text-slate-500 text-sm'>Naukri.com </label>
+                    <FaEarthAsia size={28} color={currentMode == 'light' ? "#000000" : "#eee"} />
+                    <label className='text-slate-500 text-sm dark:text-slate-300'>Naukri.com </label>
                 </a>
             </div>
         </div>

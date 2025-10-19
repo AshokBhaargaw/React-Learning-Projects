@@ -18,17 +18,13 @@ interface TaskTemplateProps {
 }
 
 export default function TaskTemplate({ taskData }: TaskTemplateProps) {
-    // FIX 2: Destructure properties from taskData to make them accessible
     const { id, title, description, completed } = taskData;
-
     const [showDesc, setShowDesc] = useState(false)
     const [showOptions, setShowOptions] = useState(false)
     const dispatch = useDispatch();
 
-    // Ref for detecting clicks outside the component
     const taskRef = useRef<HTMLDivElement>(null); 
 
-    // Logic to hide options when clicking outside (as requested previously)
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (taskRef.current && !taskRef.current.contains(event.target as Node)) {
@@ -42,13 +38,11 @@ export default function TaskTemplate({ taskData }: TaskTemplateProps) {
     }, []);
 
     const dltHandler = () => {
-        // FIX 4: Added client confirmation before deletion (as requested)
         const isConfirmed = window.confirm(
             `Are you sure you want to delete the task: "${title}"? This action cannot be undone.`
         );
 
         if (isConfirmed) {
-            // FIX 2: 'id' is now correctly destructured and accessible
             dispatch(deleteTask({ id: id }))
         }
     }
@@ -58,10 +52,9 @@ export default function TaskTemplate({ taskData }: TaskTemplateProps) {
     }
 
     return (
-        // FIX 5: Attach the ref to the main container div
         <div
             ref={taskRef}
-            className={`relative flex flex-col ${showDesc || showOptions ? 'rounded-t-xl rounded-l-xl' : 'rounded-xl'} bg-white min-h-10 mt-2 mx-5 border pt-2  `} >
+            className={`relative flex flex-col ${showDesc || showOptions ? 'rounded-t-xl rounded-l-xl' : 'rounded-xl'} bg-slate-800 text-slate-200 dark:bg-slate-900 dark:text-slate-200 min-h-10 mt-2 mx-5 border pt-2  `} >
             <div className={`flex justify-between `}>
                 <input
                     className='ml-5 mr-3 mt-1 size-4.5 cursor-pointer'

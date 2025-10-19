@@ -4,8 +4,6 @@ import Taskmanager from './TaskManager/Taskmanager'
 
 export default function App() {
 
-
-
   return (
     <div >
       <div className='min-h-screen overflow-hidden p-0 max-w-10/12 m-auto'>

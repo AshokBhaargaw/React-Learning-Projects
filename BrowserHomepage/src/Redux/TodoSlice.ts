@@ -16,7 +16,7 @@ const loadTasksFromLocalStorage = (): Task[] => {
     try {
         const serializedState = localStorage.getItem(LOCAL_STORAGE_KEY);
         if (serializedState === null) {
-            return []; // No tasks saved yet
+            return [];
         }
         return JSON.parse(serializedState) as Task[];
     } catch (e) {
@@ -49,7 +49,7 @@ export const todoSlice = createSlice({
     reducers: {
         addTask: (state, action: PayloadAction<{ title: string; description?: string }>) => {
             const newTask: Task = {
-                id: Date.now(), 
+                id: Date.now(),
                 title: action.payload.title,
                 description: action.payload.description,
                 completed: false
