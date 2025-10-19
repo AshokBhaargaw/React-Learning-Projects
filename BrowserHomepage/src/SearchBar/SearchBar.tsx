@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { FaGoogle, FaLinkedin, FaYoutube, FaInstagram, FaGithub, FaFacebook } from "react-icons/fa";
 import { FaXTwitter, FaEarthAsia } from "react-icons/fa6";
 import { useSelector } from 'react-redux';
@@ -11,22 +11,35 @@ export default function SearchBar() {
     let searchString = input.split(" ").join("+")
     const currentMode = useSelector((state: RootState) => state.theme.mode);
 
-    console.log(currentMode);
-
+    // Search on Google
     const searchOnGoogle = () => {
-        window.open(`https://www.google.com/search?q=${searchString}`)
+        window.open(`https://www.google.com/search?q=${searchString}`, '_self')
         setinput('')
     }
 
+    // Search on youtube
     const searchOnYoutube = () => {
-        window.open(`https://www.youtube.com/results?search_query=${searchString}`)
+        window.open(`https://www.youtube.com/results?search_query=${searchString}`, '_self')
         setinput('')
     }
+
+    // Enter Handler
+    const enterHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key == "Enter") {
+            if (e.ctrlKey) {
+                searchOnYoutube()
+            } else {
+                searchOnGoogle()
+            }
+        }
+    }
+
 
     return (
         <div className="min-h-30 min-w-100 p-5">
             <div className="h-10 flex max-w-250 m-auto justify-between">
                 <input
+                    onKeyDown={enterHandler}
                     type="search"
                     onChange={(e) => setinput(e.target.value)}
                     value={input}
