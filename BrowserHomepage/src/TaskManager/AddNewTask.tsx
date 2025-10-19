@@ -98,8 +98,6 @@ export default function AddNewTask() {
                         placeholder='Add description...' />
                 </div>
             }
-
-
         </div>
     )
 }

@@ -91,28 +91,27 @@ export default function TaskTemplate({ taskData }: TaskTemplateProps) {
             {
                 showDesc &&
                 <textarea
-                    className='w-full rounded-bl-xl bg-slate-50 mt-2 pl-5 border-0 outline-0'
-                    // Use 'description' instead of 'desc'
+                    className='w-full rounded-bl-xl dark:bg-secondary bg-slate-50 text-dark-primary mt-2 pl-5 border-0 outline-0'
                     value={description || "No description added"} 
                     readOnly
                 />
             }
             {
                 showOptions &&
-                <div className='absolute right-0 top-10 z-12 bg-slate-100 border-x border-b rounded-b pb-1 w-50'>
+                <div className='absolute right-0 top-10 z-12 dark:bg-dark-background bg-slate-100 border-x border-b rounded-b pb-1 w-50'>
                     <button
                         onClick={dltHandler}
-                        className='w-full text-left hover:bg-red-100 cursor-pointer pl-2 text-red-600 font-medium'
+                        className='w-full text-left dark:hover:bg-dark-secondary hover:bg-red-100 cursor-pointer pl-2'
                     > Delete Task</button>
                     <button
-                        className='w-full text-left hover:bg-blue-100 cursor-pointer pl-2'
+                        className='w-full text-left dark:hover:bg-dark-secondary hover:bg-blue-100 cursor-pointer pl-2'
                     > Edit Task</button>
                     <button
-                        className='w-full text-left hover:bg-blue-100 cursor-pointer pl-2'
+                        className='w-full text-left dark:hover:bg-dark-secondary hover:bg-blue-100 cursor-pointer pl-2'
                     > Archive Task</button>
                     <button
                         onClick={toggleCompletedHandler}
-                        className='w-full text-left hover:bg-blue-100 cursor-pointer pl-2'
+                        className='w-full text-left dark:hover:bg-dark-secondary hover:bg-blue-100 cursor-pointer pl-2'
                     > {completed ? 'Mark as incomplete' : 'Mark as completed'}</button>
                 </div>
             }
