@@ -53,7 +53,7 @@ export default function AddNewTask() {
                         onChange={e => setinput(e.target.value)}
                         value={input}
                         type="text"
-                        className='bg-white h-8 w-9/12 pl-2 outline-none'
+                        className='bg-slate-100 dark:bg-dark-background h-8 w-9/12 pl-2 outline-none'
                     />
                     <span className='bg-blue-400 text-white h-8 w-3/12 rounded flex justify-evenly' >
                         <button

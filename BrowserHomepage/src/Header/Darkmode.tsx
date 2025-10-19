@@ -22,6 +22,7 @@ export default function DarkMode() {
 
     return (
         <button
+            title={`turn off ${currentMode} mode`}
             onClick={handleToggle}
             className='w-10 h-10 flex justify-center place-items-center rounded-full bg-slate-500 dark:bg-slate-500 cursor-pointer '
         >
