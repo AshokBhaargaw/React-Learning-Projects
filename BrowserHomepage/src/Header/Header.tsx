@@ -1,4 +1,4 @@
-import DarkMode from "./DarkMode";
+import DarkMode from "./Darkmode"
 
 export default function Header() {
     return (
