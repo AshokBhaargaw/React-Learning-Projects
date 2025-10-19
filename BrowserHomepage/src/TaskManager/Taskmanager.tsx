@@ -11,7 +11,7 @@ export default function Taskmanager() {
                 <h1 className='text-2xl font-bold mt-1 mx-5 w-2/12 inline'>Tasks</h1>
                 <AddNewTask />
             </div>
-            <hr className='text-white' />
+            <hr className='dark:text-slate-200 text-slate-800 ' />
             <div>
                 {tasks.map(task => (
                     <TaskTemplate
