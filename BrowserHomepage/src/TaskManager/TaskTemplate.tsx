@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState } from 'react'
 import { RxCross2 } from "react-icons/rx";
 import { IoIosArrowDropdown, IoIosMenu, IoIosArrowDropup } from "react-icons/io";
 import { useDispatch } from 'react-redux';

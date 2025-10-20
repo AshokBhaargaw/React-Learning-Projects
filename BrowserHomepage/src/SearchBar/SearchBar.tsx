@@ -34,7 +34,6 @@ export default function SearchBar() {
         }
     }
 
-
     return (
         <div className="min-h-30 min-w-100 p-5">
             <div className="h-10 flex max-w-250 m-auto justify-between">
@@ -50,13 +49,13 @@ export default function SearchBar() {
                 <span className="bg-gray-100 w-2/12 flex justify-evenly border rounded-r-xl">
                     <button
                         onClick={searchOnGoogle}
-                        className="dark:bg-slate-800 cursor-pointer hover:bg-slate-300 h-full w-6/12 flex justify-center items-center border-r border-slate-400"
+                        className="dark:bg-slate-800 cursor-pointer dark:hover:bg-dark-secondary hover:bg-slate-300 h-full w-6/12 flex justify-center items-center border-r border-slate-400"
                     >
                         <FaGoogle size={22} />
                     </button>
                     <button
                         onClick={searchOnYoutube}
-                        className="dark:bg-slate-800 cursor-pointer hover:bg-slate-300 h-full w-6/12 flex justify-center items-center rounded-r-xl"
+                        className="dark:bg-slate-800 cursor-pointer dark:hover:bg-dark-secondary hover:bg-slate-300 h-full w-6/12 flex justify-center items-center rounded-r-xl"
                     >
                         <FaYoutube size={25} />
                     </button>

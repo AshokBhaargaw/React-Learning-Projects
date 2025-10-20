@@ -1,6 +1,5 @@
-import React from 'react'
 import { useDispatch } from 'react-redux';
-import { deleteTask, toggleTaskCompleted } from '../Redux/TodoSlice';
+import { deleteTask } from '../Redux/TodoSlice';
 
 interface Task {
     id: number;
