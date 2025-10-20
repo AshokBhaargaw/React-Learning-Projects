@@ -41,7 +41,6 @@ export default function TaskTemplate({ taskData }: TaskTemplateProps) {
                     type="text"
                     readOnly
                     value={title}
-                    // Apply line-through style if completed
                     className={`h-full w-full outline-0 ${completed ? 'line-through text-gray-500' : ''}`}
                 />
                 <span className='w-2/12 flex justify-evenly'>
@@ -56,7 +55,7 @@ export default function TaskTemplate({ taskData }: TaskTemplateProps) {
                     </button>
                     <button
                         onClick={() => setShowOptions(!showOptions)}
-                        className='cursor-pointer'>
+                        className='cursor-pointer border-0 outline-0'>
                         {
                             showOptions ? <RxCross2 size={23} /> : <IoIosMenu size={23} />
                         }
