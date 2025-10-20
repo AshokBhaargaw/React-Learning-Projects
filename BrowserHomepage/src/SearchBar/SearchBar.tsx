@@ -9,8 +9,19 @@ import SearchSuggetions from './SearchSuggetions';
 export default function SearchBar() {
     const dispatch = useDispatch();
     const [input, setinput] = useState('')
-    const [isInputFocused, setisInputFocused] = useState(false)
+    const [isInputFocused, setIsInputFocused] = useState(false)
     let searchString = input.split(" ").join("+")
+    const wrapperRef = useRef<HTMLDivElement | null>(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            const target = event.target as Node | null;         
+            (wrapperRef.current && target && !wrapperRef.current.contains(target)) && setIsInputFocused(false)
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => { document.removeEventListener('mousedown', handleClickOutside); };
+    }, []);
+
 
     // Search on Google
     const searchOnGoogle = () => {
@@ -38,12 +49,11 @@ export default function SearchBar() {
     }
 
     return (
-        <div className="min-h-30 min-w-100 p-5 relative">
+        <div className="min-h-30 min-w-100 p-5 relative" ref={wrapperRef}>
             <div className="h-10 flex max-w-250 m-auto justify-between">
                 <input
                     onKeyDown={enterHandler}
-                    onFocus={() => setisInputFocused(true)}
-                    // onBlur={() => setisInputFocused(false)}
+                    onFocus={() => setIsInputFocused(true)}
                     type="search"
                     autoComplete='off'
                     onChange={(e) => setinput(e.target.value)}
