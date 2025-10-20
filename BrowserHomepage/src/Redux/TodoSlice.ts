@@ -32,11 +32,7 @@ interface DeleteTaskPayload {
 }
 
 const initialState: TodoState = {
-    tasks: [
-        { id: 1, title: 'make projects to learn Redux Toolkit', description: 'Setup three small projects.', completed: false },
-        { id: 2, title: 'Implement single-open logic', description: 'Ensure only one detail view is active at a time.', completed: false },
-        { id: 3, title: 'Refactor TaskTemplate for edit mode', description: 'Switch readOnly inputs to editable inputs using local state.', completed: true },
-    ]
+    tasks: []
 };
 
 const todoSlice = createSlice({

@@ -1,26 +1,29 @@
 import React, { useState } from 'react'
-import { FaGoogle, FaLinkedin, FaYoutube, FaInstagram, FaGithub, FaFacebook } from "react-icons/fa";
-import { FaXTwitter, FaEarthAsia } from "react-icons/fa6";
-import { useSelector } from 'react-redux';
-import type { RootState } from '../Redux/store'
-
+import { FaGoogle, FaYoutube } from "react-icons/fa";
+import { useDispatch } from 'react-redux';
+import { addSearchHistory } from '../Redux/SearchHistorySlice';
+import BookMarks from './BookMarks';
+import SearchSuggetions from './SearchSuggetions';
 
 
 export default function SearchBar() {
+    const dispatch = useDispatch();
     const [input, setinput] = useState('')
+    const [isInputFocused, setisInputFocused] = useState(false)
     let searchString = input.split(" ").join("+")
-    const currentMode = useSelector((state: RootState) => state.theme.mode);
 
     // Search on Google
     const searchOnGoogle = () => {
-        window.open(`https://www.google.com/search?q=${searchString}`, '_self')
+        dispatch(addSearchHistory({ query: input, mode: 'google' }))
         setinput('')
+        window.open(`https://www.google.com/search?q=${searchString}`, '_self')
     }
 
     // Search on youtube
     const searchOnYoutube = () => {
-        window.open(`https://www.youtube.com/results?search_query=${searchString}`, '_self')
+        dispatch(addSearchHistory({ query: input, mode: 'youtube' }))
         setinput('')
+        window.open(`https://www.youtube.com/results?search_query=${searchString}`, '_self')
     }
 
     // Enter Handler
@@ -35,11 +38,14 @@ export default function SearchBar() {
     }
 
     return (
-        <div className="min-h-30 min-w-100 p-5">
+        <div className="min-h-30 min-w-100 p-5 relative">
             <div className="h-10 flex max-w-250 m-auto justify-between">
                 <input
                     onKeyDown={enterHandler}
+                    onFocus={() => setisInputFocused(true)}
+                    onBlur={() => setisInputFocused(false)}
                     type="search"
+                    autoComplete='off'
                     onChange={(e) => setinput(e.target.value)}
                     value={input}
                     name="Search"
@@ -61,35 +67,10 @@ export default function SearchBar() {
                     </button>
                 </span>
             </div>
-
-
-            <div className="flex justify-center gap-5 mt-5">
-
-                <a href="https://www.linkedin.com/in/ashokbhaargaw/" target="_blank" rel="noreferrer" className='flex place-items-center flex-col'>
-                    <FaLinkedin size={28} color="#4285F4" />
-                    <label className='text-slate-500 text-sm dark:text-slate-300'>LinkedIn </label>
-                </a>
-                <a href="https://www.facebook.com/ashokbhaargaw/" target="_blank" rel="noreferrer" className='flex place-items-center flex-col'>
-                    <FaFacebook size={28} color="#4285F4" />
-                    <label className='text-slate-500 text-sm dark:text-slate-300'>Facebook </label>
-                </a>
-                <a href="https://www.instagram.com/dev.ashokbhaargaw/" target="_blank" rel="noreferrer" className='flex place-items-center flex-col'>
-                    <FaInstagram size={28} color="#E1306C" />
-                    <label className='text-slate-500 text-sm dark:text-slate-300'>Instagram </label>
-                </a>
-                <a href="https://github.com/AshokBhaargaw/" target="_blank" rel="noreferrer" className='flex place-items-center flex-col'>
-                    <FaGithub size={28} color={currentMode == 'light' ? "#000000" : "#eee"} />
-                    <label className='text-slate-500 text-sm dark:text-slate-300'>Github </label>
-                </a>
-                <a href="https://x.com/AshokBhaargaw" target="_blank" rel="noreferrer" className='flex place-items-center flex-col'>
-                    <FaXTwitter size={28} color={currentMode == 'light' ? "#000000" : "#eee"} />
-                    <label className='text-slate-500 text-sm dark:text-slate-300'>Twitter </label>
-                </a>
-                <a href="https://www.naukri.com/" target="_blank" rel="noreferrer" className='flex place-items-center flex-col'>
-                    <FaEarthAsia size={28} color={currentMode == 'light' ? "#000000" : "#eee"} />
-                    <label className='text-slate-500 text-sm dark:text-slate-300'>Naukri.com </label>
-                </a>
-            </div>
+            {
+                isInputFocused && <SearchSuggetions />
+            }
+            <BookMarks />
         </div>
     )
 }

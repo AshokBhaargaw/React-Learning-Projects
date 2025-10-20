@@ -116,7 +116,7 @@ export default function TaskTemplate({ taskData, activeDetails, onToggleDetails,
 
             {showDesc && !isEditing && (
                 <textarea
-                    className='w-full rounded-bl-xl dark:bg-secondary bg-slate-50 text-dark-primary mt-2 pl-5 border-0 outline-0'
+                    className='w-full rounded-bl-xl dark:bg-secondary bg-slate-50 mt-2 pl-5 border-0 outline-0'
                     value={description || "No description added"}
                     readOnly
                 />

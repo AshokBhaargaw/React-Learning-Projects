@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import todoReducer from './TodoSlice';
 import themeReducer from './DarkmodeSlice';
+import HistoryReducer from './SearchHistorySlice';
 
 export const store = configureStore({
   reducer: {
     todo: todoReducer,
     theme: themeReducer,
+    hitory: HistoryReducer,
   },
 })
 
