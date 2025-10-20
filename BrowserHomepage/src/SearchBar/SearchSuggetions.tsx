@@ -30,11 +30,11 @@ export default function SearchSuggetions() {
                     {
                         searchHistory.map((search, i) => (
                             i < 5 &&
-                            <li key={i} className='flex justify-between place-items-center my-2 px-2'>
+                            <li key={i} className='flex justify-between place-items-center my-2 px-2 cursor-pointer' onClick={()=> searchAgain(search)} >
                                 <span className="mr-2">
                                     {search.mode == 'youtube' ? <FaYoutube /> : <FaGoogle />}
                                 </span>
-                                <input type="text" readOnly className='w-9/12 border-0 outline-0 cursor-auto' value={search.query} />
+                                <input type="text" readOnly className='w-9/12 border-0 outline-0 cursor-pointer' value={search.query} onClick={()=> searchAgain(search)} />
                                 <span className='w-2/12'>
                                     <button title="Search again on Google" className='w-6/12 cursor-pointer hover:text-blue-600' onClick={() => (searchAgain({ query: search.query, mode: 'google' }))}><FaGoogle /></button>
                                     <button title="Search again on Youtube" className='w-6/12 cursor-pointer hover:text-red-500' onClick={() => (searchAgain({ query: search.query, mode: 'youtube' }))}><FaYoutube /></button>

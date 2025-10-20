@@ -43,7 +43,7 @@ export default function SearchBar() {
                 <input
                     onKeyDown={enterHandler}
                     onFocus={() => setisInputFocused(true)}
-                    onBlur={() => setisInputFocused(false)}
+                    // onBlur={() => setisInputFocused(false)}
                     type="search"
                     autoComplete='off'
                     onChange={(e) => setinput(e.target.value)}
