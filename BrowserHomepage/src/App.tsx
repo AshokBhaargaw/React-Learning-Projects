@@ -1,5 +1,6 @@
 import SearchBar from './SearchBar/SearchBar'
 import Header from './Header/Header'
+import Tiptap from '../Components/Tiptap';
 import Taskmanager from './TaskManager/Taskmanager'
 
 export default function App() {
@@ -12,6 +13,7 @@ export default function App() {
         <div className='w-full flex justify-around gap-5'>
           <Taskmanager />
         </div>
+        <Tiptap />
       </div>
     </div>
   )

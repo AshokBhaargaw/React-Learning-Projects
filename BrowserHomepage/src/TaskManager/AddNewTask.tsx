@@ -1,8 +1,6 @@
 import { useRef, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { addTask } from '../Redux/TodoSlice';
-
-// importing icons
 import { MdOutlineCancel } from "react-icons/md";
 import { IoMdAddCircleOutline, IoIosArrowDropdown, IoIosArrowDropup } from "react-icons/io";
 
