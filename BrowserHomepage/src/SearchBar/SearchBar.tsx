@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react';
 import { FaGoogle, FaYoutube } from "react-icons/fa";
 import { useDispatch } from 'react-redux';
 import { addSearchHistory } from '../Redux/SearchHistorySlice';
@@ -68,7 +68,7 @@ export default function SearchBar() {
                 </span>
             </div>
             {
-                isInputFocused && <SearchSuggetions />
+                isInputFocused && <SearchSuggetions setInputValue={setinput} />
             }
             <BookMarks />
         </div>

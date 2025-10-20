@@ -3,13 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import type { RootState } from '../Redux/store';
 import { addSearchHistory, removeSearchQuery } from '../Redux/SearchHistorySlice';
 
-export default function SearchSuggetions() {
+export default function SearchSuggetions({setInputValue}: {setInputValue: (value: string) => void}) {
     const searchHistory = useSelector((state: RootState) => state.hitory.history)
     const dispatch = useDispatch();
 
     // Search again function
     const searchAgain = (search: { query: string, mode: 'google' | 'youtube' }) => {
         const { query, mode } = search;
+        setInputValue(query)
         dispatch(removeSearchQuery(query))
         dispatch(addSearchHistory({ query, mode }))
         window.open(`https://www.${mode}.com/search?q=${query}`, '_self')
