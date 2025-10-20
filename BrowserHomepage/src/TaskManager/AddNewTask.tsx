@@ -53,7 +53,7 @@ export default function AddNewTask() {
                         onChange={e => setinput(e.target.value)}
                         value={input}
                         type="text"
-                        className='bg-slate-100 dark:bg-dark-background h-8 w-9/12 px-2 outline-none'
+                        className='bg-slate-100 dark:bg-dark-secondary border-y border-l rounded-l h-8 w-9/12 px-2 outline-none'
                     />
                     <span className='bg-blue-400 text-white h-8 w-3/12 rounded flex justify-evenly' >
                         <button
@@ -94,7 +94,7 @@ export default function AddNewTask() {
                     <textarea
                         onChange={e => setDesc(e.target.value)}
                         rows={5}
-                        className='bg-slate-100 w-full pl-2  rounded-b absolute top-0 right-0 z-2 outline-0 '
+                        className='bg-slate-100 dark:bg-dark-background w-full pl-2  rounded-b absolute top-0 right-0 z-2 outline-0 '
                         placeholder='Add description...' />
                 </div>
             }
