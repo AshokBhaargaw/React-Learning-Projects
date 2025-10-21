@@ -4,7 +4,6 @@ import { addTask } from '../Redux/TodoSlice';
 import { MdOutlineCancel } from "react-icons/md";
 import { IoMdAddCircleOutline, IoIosArrowDropdown, IoIosArrowDropup } from "react-icons/io";
 
-
 export default function AddNewTask() {
     const [input, setinput] = useState('')
     const [desc, setDesc] = useState('')
@@ -88,6 +87,7 @@ export default function AddNewTask() {
                 </div>
             }
             {addDesc &&
+                
                 <div className='relative'>
                     <textarea
                         onChange={e => setDesc(e.target.value)}
