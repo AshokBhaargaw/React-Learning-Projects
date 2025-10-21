@@ -1,6 +1,5 @@
 import SearchBar from './SearchBar/SearchBar'
 import Header from './Header/Header'
-import Tiptap from './Components/Tiptap';
 import Taskmanager from './TaskManager/Taskmanager'
 
 export default function App() {
@@ -14,7 +13,6 @@ export default function App() {
           <Taskmanager />
 
         </div>
-       <Tiptap/>
       </div>
     </div>
   )

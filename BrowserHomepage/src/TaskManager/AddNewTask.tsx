@@ -2,7 +2,8 @@ import { useRef, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { addTask } from '../Redux/TodoSlice';
 import { MdOutlineCancel } from "react-icons/md";
-import { IoMdAddCircleOutline, IoIosArrowDropdown, IoIosArrowDropup } from "react-icons/io";
+import { IoMdAddCircleOutline, IoIosArrowDropdown, IoIosArrowDropup, IoIosExpand } from "react-icons/io";
+import FinalTiptapEditor from '../Components/FinalTiptapEditor';
 
 export default function AddNewTask() {
     const [input, setinput] = useState('')
@@ -63,11 +64,7 @@ export default function AddNewTask() {
                             onClick={() => setAddDesc(!addDesc)}
                             title="Add desciption"
                             className='cursor-pointer hover:text-green-900 outline-0 border-0'>
-                            {
-                                addDesc ?
-                                    <IoIosArrowDropup size={20} />
-                                    : <IoIosArrowDropdown size={20} />
-                            }
+                            <IoIosExpand size={18} />
                         </button>
                         <button
                             onClick={canceltaskCreations}
@@ -87,13 +84,9 @@ export default function AddNewTask() {
                 </div>
             }
             {addDesc &&
-                
-                <div className='relative'>
-                    <textarea
-                        onChange={e => setDesc(e.target.value)}
-                        rows={5}
-                        className='bg-slate-100 dark:bg-dark-background w-full pl-2  rounded-b absolute top-0 right-0 z-2 outline-0 '
-                        placeholder='Add description...' />
+
+                <div>
+                    <FinalTiptapEditor keepOpen={setAddDesc} taskTitleData={{ input, setinput }} />
                 </div>
             }
         </div>

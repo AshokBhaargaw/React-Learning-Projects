@@ -17,12 +17,3 @@
 }
 
 
-
-
-/* Tiptap Text Editor CSS */
-.ProseMirror {
-    height: 75vh;
-    border: 0;
-    outline: 0;
-    padding: 5px;
-}
