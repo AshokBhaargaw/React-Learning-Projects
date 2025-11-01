@@ -79,7 +79,7 @@ export default function AddNewTask() {
                     <button
                         className='bg-blue-400 text-white h-8 w-3/12 font-bold rounded cursor-pointer'
                         onClick={() => setAddingTask(true)}>
-                        Add Task
+                        Add Note
                     </button>
                 </div>
             }

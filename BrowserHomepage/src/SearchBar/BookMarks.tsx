@@ -29,10 +29,6 @@ export default function BookMarks() {
                 <FaXTwitter size={28} color={currentMode == 'light' ? "#000000" : "#eee"} />
                 <label className='text-slate-500 text-sm dark:text-slate-300'>Twitter </label>
             </a>
-            <a href="https://www.naukri.com/" target="_blank" rel="noreferrer" className='flex place-items-center flex-col'>
-                <FaEarthAsia size={28} color={currentMode == 'light' ? "#000000" : "#eee"} />
-                <label className='text-slate-500 text-sm dark:text-slate-300'>Naukri.com </label>
-            </a>
         </div>
     )
 }

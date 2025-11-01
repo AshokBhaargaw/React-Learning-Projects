@@ -68,6 +68,11 @@
   padding: 5px;
 }
 
+.ProseMirror h1 {
+  margin: 18px 0 8px;
+  font-size: 24px;
+  font-weight: 700;
+}
 .ProseMirror h2 {
   margin: 16px 0 8px;
   font-size: 20px;
@@ -84,15 +89,6 @@
   color: #e0e0e0;
 }
 
-.ProseMirror ul {
-  display: block;
-  list-style-type: disc;
-  margin-top: 1em;
-  margin-bottom: 1 em;
-  margin-left: 0;
-  margin-right: 0;
-  padding-left: 40px;
-}
 
 .ProseMirror ol {
   display: block;

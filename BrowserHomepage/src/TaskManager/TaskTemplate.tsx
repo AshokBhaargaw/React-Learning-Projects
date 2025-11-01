@@ -99,8 +99,8 @@ export default function TaskTemplate({ taskData, activeDetails, onToggleDetails,
                             className='cursor-pointer border-0 outline-0'>
                             {
                                 showDesc ?
-                                    <IoIosArrowDropup size={23} />
-                                    : <IoIosArrowDropdown size={23} />
+                                <IoIosArrowDropup size={23} />
+                                : <IoIosArrowDropdown size={23} />
                             }
                         </button>
                         <button
@@ -115,11 +115,10 @@ export default function TaskTemplate({ taskData, activeDetails, onToggleDetails,
             </div>
 
             {showDesc && !isEditing && (
-                <textarea
-                    className='w-full rounded-bl-xl dark:bg-secondary bg-slate-50 mt-2 pl-5 border-0 outline-0'
-                    value={description || "No description added"}
-                    readOnly
-                />
+                <div className='w-full rounded-bl-xl dark:bg-secondary bg-slate-50 mt-2 pl-5 border-0 outline-0'>
+                    <div dangerouslySetInnerHTML={{ __html: description ?? 'Desction not added' }} />
+                </div>
+
             )}
 
             {showOptions && !isEditing && (

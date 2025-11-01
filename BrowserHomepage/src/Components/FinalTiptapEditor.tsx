@@ -21,7 +21,10 @@ const FinalTiptapEditor = ({ keepOpen, taskTitleData }: FinalTiptapEditorProps) 
   const dispatch = useDispatch();
 
   const { input, setinput } = taskTitleData;
-  const editor = useEditor({ extensions: [StarterKit], content, onUpdate: ({ editor }) => setContent(editor.getHTML()), })
+  const editor = useEditor({
+    extensions: [StarterKit], content,
+    onUpdate: ({ editor }) => setContent(editor.getHTML()),
+  })
 
 
   // Saving Content 
@@ -34,7 +37,7 @@ const FinalTiptapEditor = ({ keepOpen, taskTitleData }: FinalTiptapEditorProps) 
 
 
   return (
-    <div className="editor-container">
+    <div className="editor-container flex flex-col z-20">
       <div className='border-b flex gap-3 p-2 dark:bg-slate-800 bg-slate-200 '>
         <p className='text-slate-400'>Title: </p>
         <input
@@ -53,8 +56,7 @@ const FinalTiptapEditor = ({ keepOpen, taskTitleData }: FinalTiptapEditorProps) 
           <button onClick={() => editor.chain().focus().toggleItalic().run()}> Italic </button>
           <button onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}> H1 </button>
           <button onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}> H2 </button>
-          <button onClick={() => editor.chain().focus().toggleBulletList().run()}> UL </button>
-          <button onClick={() => editor.chain().focus().toggleOrderedList().run()}>OL</button>        </div>
+          <button onClick={() => editor.chain().focus().toggleOrderedList().run()}>List</button>        </div>
         <div className="toolbar">
           <button onClick={addTaskHandler}>  Save </button>
           <button onClick={() => keepOpen(false)}> Cancel </button>
