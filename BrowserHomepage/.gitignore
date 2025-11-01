@@ -22,6 +22,4 @@ node_modules
 *.sw?
 
 .env
-
-.env
 /.env
