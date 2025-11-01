@@ -1,5 +1,5 @@
 import { FaLinkedin, FaInstagram, FaGithub, FaFacebook } from "react-icons/fa";
-import { FaXTwitter, FaEarthAsia } from "react-icons/fa6";
+import { FaXTwitter } from "react-icons/fa6";
 import type {RootState} from '../Redux/store';
 import { useSelector } from "react-redux";
 
@@ -28,10 +28,6 @@ export default function BookMarks() {
             <a href="https://x.com/AshokBhaargaw" target="_blank" rel="noreferrer" className='flex place-items-center flex-col'>
                 <FaXTwitter size={28} color={currentMode == 'light' ? "#000000" : "#eee"} />
                 <label className='text-slate-500 text-sm dark:text-slate-300'>Twitter </label>
-            </a>
-            <a href="https://www.naukri.com/" target="_blank" rel="noreferrer" className='flex place-items-center flex-col'>
-                <FaEarthAsia size={28} color={currentMode == 'light' ? "#000000" : "#eee"} />
-                <label className='text-slate-500 text-sm dark:text-slate-300'>Naukri.com </label>
             </a>
         </div>
     )
