@@ -1,5 +1,5 @@
 import { FaLinkedin, FaInstagram, FaGithub, FaFacebook } from "react-icons/fa";
-import { FaXTwitter, FaEarthAsia } from "react-icons/fa6";
+import { FaXTwitter } from "react-icons/fa6";
 import type {RootState} from '../Redux/store';
 import { useSelector } from "react-redux";
 

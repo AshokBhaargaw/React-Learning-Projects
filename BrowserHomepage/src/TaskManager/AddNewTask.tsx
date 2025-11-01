@@ -2,7 +2,7 @@ import { useRef, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { addTask } from '../Redux/TodoSlice';
 import { MdOutlineCancel } from "react-icons/md";
-import { IoMdAddCircleOutline, IoIosArrowDropdown, IoIosArrowDropup, IoIosExpand } from "react-icons/io";
+import { IoMdAddCircleOutline, IoIosExpand } from "react-icons/io";
 import FinalTiptapEditor from '../Components/FinalTiptapEditor';
 
 export default function AddNewTask() {

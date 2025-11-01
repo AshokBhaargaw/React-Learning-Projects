@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 
 export default function Clock() {
   const [date, setdate] = useState(new Date())
-  let livable = new Date(2053, 4, 9);
 
   useEffect(() => {
     setInterval(() => {

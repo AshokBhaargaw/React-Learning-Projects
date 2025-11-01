@@ -1,11 +1,9 @@
-import { useState } from 'react';
 import Calendar from 'react-calendar';
 import './Calendar.css'
 
-
 export default function CalendarComp() {
 
-  const [date, setDate] = useState(new Date())
+  const date = new Date()
 
   return (
     <div className='w-1/2'>
