@@ -51,8 +51,8 @@ const todoSlice = createSlice({
       saveLocally(state.tasks);
     },
 
-    toggleTaskCompleted: (state, action: PayloadAction<number>) => {
-      const task = state.tasks.find((t) => t.id === action.payload);
+    toggleTaskCompleted: (state, action: PayloadAction<{id:number}>) => {
+      const task = state.tasks.find((t) => t.id === action.payload.id);
       if (task) task.completed = !task.completed;
       saveLocally(state.tasks);
     },
@@ -69,8 +69,8 @@ const todoSlice = createSlice({
       saveLocally(state.tasks);
     },
 
-    deleteTask: (state, action: PayloadAction<number>) => {
-      state.tasks = state.tasks.filter((t) => t.id !== action.payload);
+    deleteTask: (state, action: PayloadAction<{id:number}>) => {
+      state.tasks = state.tasks.filter((t) => t.id !== action.payload.id);
       saveLocally(state.tasks);
     },
   },

@@ -17,5 +17,5 @@ export default function MotivationalLine() {
         getMotivation();
     }, [])
 
-    return <div> {motivation} </div>
+    return <div className='text-center'> {motivation} </div>
 }
