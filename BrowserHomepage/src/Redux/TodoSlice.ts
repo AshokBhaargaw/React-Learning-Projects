@@ -1,76 +1,81 @@
-import { createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
+import type { PayloadAction } from "@reduxjs/toolkit";
 
 interface Task {
-    id: number;
-    title: string;
-    description?: string;
-    completed: boolean;
+  id: number;
+  title: string;
+  description?: string;
+  completed: boolean;
 }
 
 interface TodoState {
-    tasks: Task[];
+  tasks: Task[];
 }
 
-interface ToggleCompletedPayload {
-    id: number;
-}
+const LocalLoader = () => {
+  try {
+    const saved = localStorage.getItem("tasks");
+    return saved ? JSON.parse(saved) : [];
+  } catch (err) {
+    console.log(err);
+    return [];
+  }
+};
 
-interface EditTaskPayload {
-    id: number;
-    title: string;
-    description?: string;
-}
-
-interface AddTaskPayload {
-    title: string;
-    description?: string;
-}
-
-interface DeleteTaskPayload {
-    id: number;
-}
+const saveLocally = (tasks: Task[]) => {
+  try {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  } catch (err) {
+    console.error(err);
+  }
+};
 
 const initialState: TodoState = {
-    tasks: []
+  tasks: LocalLoader(),
 };
 
 const todoSlice = createSlice({
-    name: 'todo',
-    initialState,
-    reducers: {
-        addTask: (state, action: PayloadAction<AddTaskPayload>) => {
-            const newTask: Task = {
-                id: Date.now(),
-                title: action.payload.title,
-                description: action.payload.description,
-                completed: false,
-            };
-            state.tasks.unshift(newTask);
-        },
-
-        toggleTaskCompleted: (state, action: PayloadAction<ToggleCompletedPayload>) => {
-            const task = state.tasks.find(t => t.id === action.payload.id);
-            if (task) {
-                task.completed = !task.completed;
-            }
-        },
-
-        editTask: (state, action: PayloadAction<EditTaskPayload>) => {
-            const { id, title, description } = action.payload;
-            const task = state.tasks.find(t => t.id === id);
-
-            if (task) {
-                task.title = title;
-                task.description = description;
-            }
-        },
-
-        deleteTask: (state, action: PayloadAction<DeleteTaskPayload>) => {
-            state.tasks = state.tasks.filter(t => t.id !== action.payload.id);
-        },
+  name: "todo",
+  initialState,
+  reducers: {
+    addTask: (
+      state,
+      action: PayloadAction<{ title: string; description?: string }>
+    ) => {
+      state.tasks.unshift({
+        id: Date.now(),
+        title: action.payload.title,
+        description: action.payload.description,
+        completed: false,
+      });
+      saveLocally(state.tasks);
     },
+
+    toggleTaskCompleted: (state, action: PayloadAction<number>) => {
+      const task = state.tasks.find((t) => t.id === action.payload);
+      if (task) task.completed = !task.completed;
+      saveLocally(state.tasks);
+    },
+
+    editTask: (
+      state,
+      action: PayloadAction<{ id: number; title: string; description?: string }>
+    ) => {
+      const task = state.tasks.find((t) => t.id === action.payload.id);
+      if (task) {
+        task.title = action.payload.title;
+        task.description = action.payload.description;
+      }
+      saveLocally(state.tasks);
+    },
+
+    deleteTask: (state, action: PayloadAction<number>) => {
+      state.tasks = state.tasks.filter((t) => t.id !== action.payload);
+      saveLocally(state.tasks);
+    },
+  },
 });
 
-export const { addTask, toggleTaskCompleted, editTask, deleteTask } = todoSlice.actions;
+export const { addTask, toggleTaskCompleted, editTask, deleteTask } =
+  todoSlice.actions;
 export default todoSlice.reducer;
