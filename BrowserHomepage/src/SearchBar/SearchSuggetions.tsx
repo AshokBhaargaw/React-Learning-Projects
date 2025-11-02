@@ -19,14 +19,24 @@ export default function SearchSuggetions({
     query: string;
     SearchAgainMode: "google" | "youtube";
   }) => {
+    setInputValue(newSearch.query)
     dispatch(removeSearchQuery(newSearch.query));
     dispatch(
-      addSearchHistory({ query: newSearch.query, mode: newSearch.SearchAgainMode })
+      addSearchHistory({
+        query: newSearch.query,
+        mode: newSearch.SearchAgainMode,
+      })
     );
     if (newSearch.SearchAgainMode === "youtube") {
-      window.open(`https://www.youtube.com/search?q=${newSearch.query}`, "_self");
+      window.open(
+        `https://www.youtube.com/search?q=${newSearch.query}`,
+        "_self"
+      );
     } else {
-      window.open(`https://www.google.com/search?q=${newSearch.query}`, "_self");
+      window.open(
+        `https://www.google.com/search?q=${newSearch.query}`,
+        "_self"
+      );
     }
   };
 
@@ -66,14 +76,16 @@ export default function SearchSuggetions({
                       readOnly
                       className="w-9/12 border-0 outline-0 cursor-default"
                       value={search.query}
-                     
                     />
                     <span className="w-2/12">
                       <button
                         title="Search again on Google"
                         className="w-6/12 cursor-pointer hover:text-blue-600"
                         onClick={() =>
-                          searchAgain({ query: search.query, SearchAgainMode: "google" })
+                          searchAgain({
+                            query: search.query,
+                            SearchAgainMode: "google",
+                          })
                         }
                       >
                         <FaGoogle />
@@ -82,7 +94,10 @@ export default function SearchSuggetions({
                         title="Search again on Youtube"
                         className="w-6/12 cursor-pointer hover:text-red-500"
                         onClick={() =>
-                          searchAgain({ query: search.query, SearchAgainMode: "youtube" })
+                          searchAgain({
+                            query: search.query,
+                            SearchAgainMode: "youtube",
+                          })
                         }
                       >
                         <FaYoutube />
