@@ -6,7 +6,7 @@ export default function Header() {
 
   useEffect(() => {
     const currHour = new Date().getHours();
-    if (currHour >= 6 && currHour < 12) {
+    if (currHour >= 5 && currHour < 12) {
       setMsg("Hi, Good Morning 🌅 Boss.");
     } else if (currHour >= 12 && currHour < 16) {
       setMsg("Hi, Good Afternoon 🍵 Boss.");
